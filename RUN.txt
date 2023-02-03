@@ -1,0 +1,1 @@
+docker compose run -u node -w /home/node -i --rm signify-ts bash

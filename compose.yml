@@ -1,0 +1,7 @@
+version: "3.9"
+
+services:
+  signify-ts:
+    image: "node:lts"
+    volumes:
+      - ".:/home/node/signify-ts"
