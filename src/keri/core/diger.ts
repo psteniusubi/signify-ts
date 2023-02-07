@@ -1,4 +1,4 @@
-const blake3 = require('blake3');
+import blake3 from 'blake3-js';
 import {Matter, MatterArgs, MtrDex} from './matter';
 
 /**

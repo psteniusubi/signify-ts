@@ -1,8 +1,8 @@
 import {Signer} from "./signer";
 
 export {};
-const { Matter, MtrDex } = require('./matter');
-const { EmptyMaterialError } = require('./kering')
+import { Matter, MtrDex } from './matter';
+import { EmptyMaterialError } from './kering';
 import libsodium  from 'libsodium-wrappers-sumo';
 
 export const enum Tier {
@@ -14,12 +14,13 @@ export const enum Tier {
 interface SalterArgs {
     raw?: Uint8Array | undefined
     code? :string
-    tier?:string
+    tier?:Tier
     qb64b? :Uint8Array | undefined
     qb64?: string
     qb2?: Uint8Array | undefined
 }
 export class Salter extends Matter {
+    tier: Tier;
 
     constructor({raw, code = MtrDex.Salt_128, tier=Tier.low, qb64, qb64b, qb2}:SalterArgs) {
         try {

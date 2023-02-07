@@ -1,9 +1,4 @@
-export {};
-const { SigMat } = require('./sigmat');
-
-class Keeper {
+export class Keeper {
     constructor() {
     }
 }
-
-module.exports = { Keeper }

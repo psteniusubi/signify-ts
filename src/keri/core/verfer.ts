@@ -1,5 +1,5 @@
 export {};
-const libsodium = require('libsodium-wrappers-sumo');
+import libsodium from 'libsodium-wrappers-sumo';
 import {Matter, MatterArgs, MtrDex} from './matter';
 
 /**

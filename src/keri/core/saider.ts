@@ -3,7 +3,7 @@ import {deversify, Dict, Serials} from "./core";
 import {EmptyMaterialError} from "./kering";
 import {dumps, sizeify} from "./serder";
 
-const blake3 = require('blake3');
+import blake3 from 'blake3-js';
 
 const Dummy = "#"
 
