@@ -1,4 +1,4 @@
-// import {TextEncoder, TextDecoder} from '../util/helper'
+import {Utf8} from "../util/helper"
 
 export enum Serials {
     JSON = "JSON",
@@ -47,9 +47,6 @@ export const KsnLabels = ["v", "i", "s", "t", "p", "d", "f", "dt", "et", "kt", "
     "bt", "b", "c", "ee", "di", "r"]
 
 export const RpyLabels = ["v", "t", "d", "dt", "r", "a"]
-
-const encoder = new TextEncoder()
-const decoder = new TextDecoder()
 
 export const VERFULLSIZE = 17;
 export const MINSNIFFSIZE = 12 + VERFULLSIZE;
@@ -160,11 +157,11 @@ export function b64ToInt(s: string): number {
 }
 
 export function b(s?: string): Uint8Array {
-    return encoder.encode(s)
+    return Utf8.encode(s)
 }
 
 export function d(u? :Uint8Array): string {
-    return decoder.decode(u)
+    return Utf8.decode(u)
 }
 
 export function concat(one: Uint8Array, two: Uint8Array): Uint8Array {

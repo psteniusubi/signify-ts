@@ -1,6 +1,6 @@
 import {EmptyMaterialError} from "./kering";
 import {b, b64ToInt, d, intToB64, readInt} from "./core";
-import { Base64, Buffer } from '../util/helper';
+import { Base64, Buffer } from "../util/helper";
 
 export class IndexerCodex {
     Ed25519_Sig: string = 'A'  // Ed25519 sig appears same in both lists if any.

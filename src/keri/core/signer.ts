@@ -8,7 +8,7 @@ import {Verfer} from "./verfer";
 import {Cigar} from "./cigar";
 import {Siger} from "./siger";
 import {IdrDex} from "./indexer";
-import { Buffer } from '../util/helper';
+import { Buffer } from "../util/helper";
 
 
 /**

@@ -1,4 +1,4 @@
-import blake3 from 'blake3-js';
+import * as blake3 from 'blake3';
 import {Matter, MatterArgs, MtrDex} from './matter';
 
 /**

@@ -1,10 +1,10 @@
 import {Matter} from "../../src/keri/core/matter";
 
-const blake3 = require('blake3');
+import * as blake3 from 'blake3';
 import {strict as assert} from "assert";
 
-const { Diger } = require('../../src/keri/core/diger');
-const { MtrDex } = require('../../src/keri/core/matter');
+import { Diger } from '../../src/keri/core/diger';
+import { MtrDex } from '../../src/keri/core/matter';
 
 
 describe('Diger', () => {

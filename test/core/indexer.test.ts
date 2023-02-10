@@ -2,7 +2,7 @@ import libsodium from "libsodium-wrappers-sumo";
 import {strict as assert} from "assert";
 import {IdrDex, Indexer} from "../../src/keri/core/indexer";
 import {b, intToB64} from "../../src/keri/core/core";
-const Base64 = require('urlsafe-base64');
+import { Base64 } from "../../src/keri/util/helper";
 
 
 describe('Indexer', () => {

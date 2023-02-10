@@ -6,3 +6,5 @@ dist
 
 # IntelliJ Project Files
 .idea
+
+package-lock.json

@@ -1,10 +1,16 @@
 {
   // see https://www.typescriptlang.org/tsconfig to better understand tsconfigs
-  "include": ["src", "types"],
+  "include": [
+    "src",
+    "types"
+  ],
   "compilerOptions": {
     "target": "ES2022",
     "module": "esnext",
-    "lib": ["dom", "esnext"],
+    "lib": [
+      "dom",
+      "esnext"
+    ],
     "importHelpers": true,
     // output .d.ts declaration files for consumers
     "declaration": true,
@@ -32,5 +38,10 @@
     "forceConsistentCasingInFileNames": true,
     // `tsdx build` ignores this option, but it is commonly used when type-checking separately with `tsc`
     "noEmit": true,
+    "paths": {
+      "platform": [
+        "./src/keri/util/platform-node.ts"
+      ]
+    },
   }
 }

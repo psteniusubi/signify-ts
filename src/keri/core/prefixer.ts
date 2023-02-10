@@ -4,7 +4,7 @@ import {Dict, Ilks} from "./core";
 import {sizeify} from "./serder";
 import {Verfer} from "./verfer";
 
-import blake3 from 'blake3-js';
+import * as blake3 from 'blake3';
 
 const Dummy: string = "#"
 
