@@ -1,4 +1,5 @@
 export const Buffer = globalThis.Buffer;
+//export { Buffer } from "node:buffer";
 
 import { toUint8Array, fromUint8Array } from "js-base64";
 
@@ -6,7 +7,8 @@ export class Base64 {
     static encode(value: Uint8Array): string {
         return fromUint8Array(value, true);
     }
-    static decode(value: string): Uint8Array {
+    static decode(value: string): Buffer {
+        // some unit tests in test/core/ are excpeting Buffer. Uint8Array makes the tests fail
         return Buffer.from(toUint8Array(value).buffer);
     }
 }
