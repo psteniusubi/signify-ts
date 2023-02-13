@@ -1,17 +1,17 @@
 import {Matter} from "../../src/keri/core/matter";
 
-import * as blake3 from 'blake3';
+import {createHash} from "blake3"
 import {strict as assert} from "assert";
 
 import { Diger } from '../../src/keri/core/diger';
 import { MtrDex } from '../../src/keri/core/matter';
-
+import { Buffer } from 'buffer';
 
 describe('Diger', () => {
   it('should generate digests', () => {
       // Create something to digest and verify
       const ser = Buffer.from('abcdefghijklmnopqrstuvwxyz0123456789', 'binary');
-      const hasher = blake3.createHash();
+      const hasher = createHash();
       const digest = hasher.update(ser).digest('');
 
       let diger = new Diger({raw: digest});

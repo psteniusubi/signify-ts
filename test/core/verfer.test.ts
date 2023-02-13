@@ -1,6 +1,6 @@
 import {MtrDex} from "../../src/keri/core/matter";
 
-import libsodium from 'libsodium-wrappers-sumo';
+import libsodium from "libsodium-wrappers-sumo"
 
 import {strict as assert} from "assert";
 

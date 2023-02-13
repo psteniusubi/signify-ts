@@ -3,7 +3,7 @@ import {strict as assert} from "assert";
 import {IdrDex, Indexer} from "../../src/keri/core/indexer";
 import {b, intToB64} from "../../src/keri/core/core";
 import { Base64 } from "../../src/keri/util/helper";
-
+import { Buffer } from 'buffer';
 
 describe('Indexer', () => {
     it('should encode and decode dual indexed signatures', async () => {

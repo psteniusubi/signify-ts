@@ -1,6 +1,7 @@
 import {EmptyMaterialError} from "./kering";
 import {b, b64ToInt, d, intToB64, readInt} from "./core";
-import { Base64, Buffer } from "../util/helper";
+import { Base64 } from "../util/helper";
+import { Buffer } from "../util/helper";
 
 export class IndexerCodex {
     Ed25519_Sig: string = 'A'  // Ed25519 sig appears same in both lists if any.
@@ -15,7 +16,7 @@ export class IndexerCodex {
     ECDSA_256k1_Big_Crt_Sig: string = '2D'  // ECDSA secp256k1 sig appears in current list only.
     Ed448_Big_Sig: string = '3A'  // Ed448 signature appears in both lists.
     Ed448_Big_Crt_Sig: string = '3B'  // Ed448 signature appears in current list only.
-
+    
 }
 
 export const IdrDex = new IndexerCodex()
@@ -104,11 +105,11 @@ export class Indexer {
     public Codex = IdrDex
 
     static Hards = new Map<string, number>([['A', 1], ['B', 1], ['C', 1], ['D', 1], ['E', 1], ['F', 1], ['G', 1], ['H', 1],
-    ['I', 1], ['J', 1], ['K', 1], ['L', 1], ['M', 1], ['N', 1], ['O', 1], ['P', 1], ['Q', 1], ['R', 1], ['S', 1],
-    ['T', 1], ['U', 1], ['V', 1], ['W', 1], ['X', 1], ['Y', 1], ['Z', 1], ['a', 1], ['b', 1], ['c', 1], ['d', 1],
-    ['e', 1], ['f', 1], ['g', 1], ['h', 1], ['i', 1], ['j', 1], ['k', 1], ['l', 1], ['m', 1], ['n', 1], ['o', 1],
-    ['p', 1], ['q', 1], ['r', 1], ['s', 1], ['t', 1], ['u', 1], ['v', 1], ['w', 1], ['x', 1], ['y', 1], ['z', 1],
-    ['0', 2], ['1', 2], ['2', 2], ['3', 2], ['4', 2]]
+        ['I', 1], ['J', 1], ['K', 1], ['L', 1], ['M', 1], ['N', 1], ['O', 1], ['P', 1], ['Q', 1], ['R', 1], ['S', 1],
+        ['T', 1], ['U', 1], ['V', 1], ['W', 1], ['X', 1], ['Y', 1], ['Z', 1], ['a', 1], ['b', 1], ['c', 1], ['d', 1],
+        ['e', 1], ['f', 1], ['g', 1], ['h', 1], ['i', 1], ['j', 1], ['k', 1], ['l', 1], ['m', 1], ['n', 1], ['o', 1],
+        ['p', 1], ['q', 1], ['r', 1], ['s', 1], ['t', 1], ['u', 1], ['v', 1], ['w', 1], ['x', 1], ['y', 1], ['z', 1],
+        ['0', 2], ['1', 2], ['2', 2], ['3', 2], ['4', 2]]
     )
 
     static Sizes = new Map(Object.entries({

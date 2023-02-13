@@ -1,5 +1,5 @@
-export const Buffer = globalThis.Buffer;
-//export { Buffer } from "node:buffer";
+// export const Buffer = globalThis.Buffer;
+export { Buffer } from "buffer";
 
 import { toUint8Array, fromUint8Array } from "js-base64";
 
