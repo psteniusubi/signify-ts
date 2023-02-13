@@ -2,6 +2,7 @@ import {EmptyMaterialError} from "./kering";
 
 import {intToB64, readInt} from './core';
 import { Base64 } from "../util/helper";
+import { Buffer } from "../util/helper";
 import {b, d} from "./core";
 
 export class Codex {

@@ -5,7 +5,7 @@ import {Cigar} from "./cigar";
 import {nowUTC} from "./utils";
 import {Siger} from "./siger";
 import { Base64 } from "../util/helper";
-import { Buffer } from 'buffer';
+import { Buffer } from "../util/helper";
 
 export function normalize(header: string) {
     return header.trim()
