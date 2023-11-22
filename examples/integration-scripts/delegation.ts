@@ -73,9 +73,15 @@ async function run() {
     console.log('OOBI resolved');
 
     // Client 2 creates delegate AID
-    let icpResult2 = await client2
-        .identifiers()
-        .create('delegate', { delpre: aid1.prefix });
+    let icpResult2 = await client2.identifiers().create('delegate', {
+        toad: 3,
+        wits: [
+            'BBilc4-L3tFUnfM_wJr4S4OJanAv_VmF_dJNN6vkf2Ha',
+            'BLskRTInXnMxWaGqcpSyMgo0nYbalW99cGZESrz3zapM',
+            'BIKKuvBwpmDVA4Ds-EpL5bt9OqPzWPja2LigFYZN2YfX',
+        ],
+        delpre: aid1.prefix
+    });
     op2 = await icpResult2.op();
     let delegatePrefix = op2.name.split('.')[1];
     console.log("Delegate's prefix:", delegatePrefix);
