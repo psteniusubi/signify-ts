@@ -26,54 +26,62 @@ interface KeyState {
     [property: string]: any;
 }
 
+async function getKeyState(
+    client: SignifyClient,
+    aid: string
+): Promise<KeyState> {
+    const keyState: KeyState[] = await client.keyStates().get(name1_id);
+    expect(keyState).toHaveLength(1);
+    return keyState[0];
+}
+
 describe('singlesig-ixn', () => {
     test('step1', async () => {
         expect(name1_id).toEqual(contact1_id);
-
-        const keystate1 = await client1.keyStates().get(name1_id);
-        expect(keystate1).toHaveLength(1);
-
-        const keystate2 = await client2.keyStates().get(contact1_id);
-        expect(keystate2).toHaveLength(1);
-
+        const local = await getKeyState(client1, name1_id);
+        const remote = await getKeyState(client2, name1_id);
         // local and remote keystate sequence match
-        expect(keystate1[0].s).toEqual(keystate2[0].s);
+        expect(local.s).toEqual(remote.s);
     });
     test('ixn1', async () => {
-        // local keystate before ixn
-        const keystate0: KeyState = (
-            await client1.keyStates().get(name1_id)
-        ).at(0);
-        expect(keystate0).not.toBeNull();
+        // local: keystate before ixn
+        const local0 = await getKeyState(client1, name1_id);
+        expect(local0).not.toBeNull();
+        // remote: keystate before ixn
+        const remote0 = await getKeyState(client2, name1_id);
+        expect(remote0).not.toBeNull();
+        // local and remote keystate match
+        expect(local0.s).toEqual(remote0.s);
 
-        // ixn
-        const result: EventResult = await client1
-            .identifiers()
-            .interact('name1', {});
-        await waitOperation(client1, await result.op());
+        const IXNS = 2;
+        for (let i = 0; i < IXNS; i++) {
+            // local: ixn #n
+            const result: EventResult = await client1
+                .identifiers()
+                .interact('name1', {});
+            await waitOperation(client1, await result.op());
+        }
 
-        // local keystate after ixn
-        const keystate1: KeyState = (
-            await client1.keyStates().get(name1_id)
-        ).at(0);
-        expect(parseInt(keystate1.s)).toBeGreaterThan(0);
-        // sequence has incremented
-        expect(parseInt(keystate1.s)).toEqual(parseInt(keystate0.s) + 1);
+        // local: keystate after ixn
+        const local1 = await getKeyState(client1, name1_id);
+        expect(parseInt(local1.s)).toBeGreaterThan(0);
+        // local: sequence has incremented
+        expect(parseInt(local1.s)).toEqual(parseInt(local0.s) + IXNS);
 
-        // remote keystate after ixn
-        const keystate2: KeyState = (
-            await client2.keyStates().get(contact1_id)
-        ).at(0);
-        // remote keystate is one behind
-        expect(parseInt(keystate2.s)).toEqual(parseInt(keystate1.s) - 1);
+        // remote: keystate after ixn
+        const remote1 = await getKeyState(client2, name1_id);
+        // remote: keystate is behind
+        expect(parseInt(remote1.s)).toEqual(parseInt(local1.s) - IXNS);
 
-        // refresh remote keystate
+        // remote: refresh keystate
         let op = await client2
             .keyStates()
-            .query(contact1_id, parseInt(keystate1.s), undefined);
+            .query(contact1_id, parseInt(remote1.s) + 1, undefined);
         op = await waitOperation(client2, op);
-        const keystate3: KeyState = op.response;
+
+        // remote: keystate after refresh
+        const remote2 = await getKeyState(client2, name1_id);
         // local and remote keystate match
-        expect(keystate3.s).toEqual(keystate1.s);
+        expect(remote2.s).toEqual(local1.s);
     });
 });
